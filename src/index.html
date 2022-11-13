@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <span><img src="./img/logo.png" alt=""></span>
+        <ul>
+            <li>Home</li>
+            <li>About</li>
+            <li>Contents</li>
+            <li>UseCases</li>
+            <li>Products</li>
+            <li>More</li>
+        </ul>
+        <span class="flags"><img class="language-flag" src="./img/USA-flag.svg" alt=""></span>
+        <h3 class="language">EN</h3>
+        <button class="connect-button">Connect App</button>
+    </nav>
+    <main>
+        <section class="announcement-section">
+            <ul class="announcement-list">
+                <li><span class="new">NEW</span></li>
+                <li>Check your eligibility for early access to ranking system.</li>
+                <li><a class="view-now" href="#">View now.</a></li>
+            </ul>
+        </section>
+        <section class="content-section">
+            <div class="main-content">
+                <h1>Leaderboard</h1>
+                <div class="content-boxes">
+                    <div class="item-1">
+                        <div class="subtitle-and-refresh">
+                            <h2 class="content-title">Recent Scores</h2>
+                            <button class="refresh">Refresh</button>
+                        </div>
+                        <div class="ranking-table">
+                        </div>
+                    </div>
+                    <div class="item-2">
+                        <h2 class="content-title">Add your Score</h2>
+                        <form class="add-to-ranking" method="post">
+                            <input id="input-name" type="text" placeholder="Your Name" value="" required>
+                            <input id="input-score" type="text" placeholder="Your Score" value="" required>
+                            <button type="submit" class="form-submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+</body>
+</html>
