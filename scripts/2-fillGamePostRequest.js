@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-
 import fetch from 'node-fetch';
 import fs from 'fs';
 import dotenv from 'dotenv';
@@ -11,7 +9,7 @@ const BASE_URL = process.env.BASE_URL || '';
 const gameConfig = JSON.parse(fs.readFileSync('./gameConfig.json'));
 const API_PATH = `${BASE_URL}games/${gameConfig.gameID}/scores/`;
 
-async function enterScoreData(enterUser, enterScore) {
+const enterScoreData = async (enterUser, enterScore) => {
   const object = {
     user: enterUser,
     score: enterScore,
@@ -27,12 +25,12 @@ async function enterScoreData(enterUser, enterScore) {
     .catch((error) => console.log(error));
 
   return sendData;
-}
+};
 
-async function getCreateGameResponse() {
+const getCreateGameResponse = async () => {
   await enterScoreData('Michael', 97);
   await enterScoreData('Nani', 53);
   await enterScoreData('Brad', 75);
-}
+};
 
 getCreateGameResponse();

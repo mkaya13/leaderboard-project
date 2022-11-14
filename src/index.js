@@ -33,17 +33,12 @@ const sortThenAdd = () => {
   tableContent.appendChild(rankingItems);
 };
 
-async function returnScoreData() {
+const returnScoreData = async () => {
   rankingList = await fetchData();
   sortThenAdd();
-}
+};
 
 returnScoreData();
-
-// const addScoresToLocalStorage = () => {
-//   const str = JSON.stringify(rankingList);
-//   localStorage.setItem('storedBookData', str);
-// };
 
 let res;
 const messageTag = document.createElement('p');

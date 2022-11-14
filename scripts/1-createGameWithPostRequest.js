@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import fetch from 'node-fetch';
 import fs from 'fs';
 import dotenv from 'dotenv';
@@ -7,7 +6,7 @@ dotenv.config();
 
 const BASE_URL = process.env.BASE_URL || '';
 
-async function createGame(gameName) {
+const createGame = async (gameName) => {
   const object = {
     name: gameName,
   };
@@ -18,21 +17,21 @@ async function createGame(gameName) {
   })
     .then((response) => response.json())
     .then((json) => json)
-    .catch((error) => console.log(error));
+    .catch((error) => error);
 
   return sentData;
-}
+};
 
 let gameIdObject = {};
 
-async function getCreateGameResponse() {
+const getCreateGameResponse = async () => {
   const responseData = await createGame('BC');
   gameIdObject = { gameID: responseData.result.slice(14, 34) };
   console.log(responseData);
   console.log(JSON.stringify(gameIdObject));
-}
+};
 
-function storeGameIdData() {
+const storeGameIdData = () => {
   fs.writeFile('gameConfig.json', JSON.stringify(gameIdObject), (err) => {
     if (err) throw err;
 
@@ -40,7 +39,7 @@ function storeGameIdData() {
       `.gameConfig.js file was succesfully created and gameID ${gameIdObject.gameID} was stored inside!`,
     );
   });
-}
+};
 
 await getCreateGameResponse();
 storeGameIdData();
