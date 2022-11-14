@@ -1,94 +1,87 @@
 import './style.css';
 import { Score } from './Modules/rankClass.js';
+import { fetchData } from './Modules/getDataFromCreatedGame.js';
+import { enterScoreData } from './Modules/postDataToCreatedGame.js';
+import { updateEventMessage } from './Modules/utils.js';
 
 const tableContent = document.querySelector('.ranking-table');
-const rankingItems = document.createElement('ul');
-const formSubmit = document.querySelector('.form-submit');
+const formTag = document.querySelector('.add-to-ranking');
 const inputName = document.getElementById('input-name');
 const inputScore = document.getElementById('input-score');
-const formTag = document.querySelector('.add-to-ranking');
+const refreshButton = document.querySelector('.refresh');
+const refreshContainer = document.querySelector('.subtitle-and-refresh');
 
-const rankingList = [
-  {
-    Name: 'Mert',
-    Score: 125,
-  },
-  {
-    Name: 'Emre',
-    Score: 78,
-  },
-  {
-    Name: 'Ali',
-    Score: 77,
-  },
-  {
-    Name: 'Muhammed',
-    Score: 42,
-  },
-  {
-    Name: 'Nani',
-    Score: 50,
-  },
-  {
-    Name: 'Haward',
-    Score: 100,
-  },
-];
-
-const addScoresToLocalStorage = () => {
-  const str = JSON.stringify(rankingList);
-  localStorage.setItem('storedBookData', str);
-};
-
+let rankingList = [];
 let rankingContent = '';
+let score = {};
+
+const rankingItems = document.createElement('ul');
+rankingItems.className = 'item-list-ul';
 
 const sortThenAdd = () => {
-  rankingList.sort((a, b) => b.Score - a.Score);
+  tableContent.innerHTML = '';
+  rankingContent = '';
+  rankingList.sort((a, b) => b.score - a.score);
 
-  rankingList.forEach((score) => {
+  rankingList.forEach((data) => {
     rankingContent += `
-          <li>${score.Name}: ${score.Score}</li>
+          <li>${data.user}: ${data.score}</li>
           `;
   });
 
-  if (rankingList.length === 6) {
-    addScoresToLocalStorage(rankingList);
-  }
-
-  const rankingData = JSON.parse(localStorage.getItem('storedBookData'));
-
-  rankingItems.innerHTML = rankingData;
+  rankingItems.innerHTML = rankingContent;
   tableContent.appendChild(rankingItems);
 };
 
-sortThenAdd();
+async function returnScoreData() {
+  rankingList = await fetchData();
+  sortThenAdd();
+}
 
-rankingItems.innerHTML = rankingContent;
-tableContent.appendChild(rankingItems);
+returnScoreData();
 
-formSubmit.addEventListener('click', (event) => {
-  event.preventDefault();
+// const addScoresToLocalStorage = () => {
+//   const str = JSON.stringify(rankingList);
+//   localStorage.setItem('storedBookData', str);
+// };
 
-  if (inputName.value !== '' && inputScore.value.match(/[0-9]/gi)) {
-    rankingContent = '';
-    const score = new Score(inputName.value, inputScore.value);
-    rankingList.push(score);
+let res;
+const messageTag = document.createElement('p');
 
-    addScoresToLocalStorage();
-
-    sortThenAdd();
-
+const submitDataToAPI = () => {
+  formTag.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    score = new Score(inputName.value, parseFloat(inputScore.value));
+    res = await enterScoreData(score);
+    if (res.result === 'Leaderboard score created correctly.') {
+      messageTag.style = 'background-color:green; color:white;';
+      updateEventMessage(formTag, messageTag, res.result);
+    } else {
+      messageTag.innerText = 'Fix your input please!';
+      messageTag.style = 'background-color:red; color:white;';
+      formTag.appendChild(messageTag);
+      setTimeout(() => {
+        formTag.removeChild(formTag.lastChild);
+      }, 3000);
+    }
     inputName.value = '';
     inputScore.value = '';
+  });
+};
 
-    rankingItems.innerHTML = rankingContent;
-  } else {
-    const warningParagraph = document.createElement('p');
-    warningParagraph.innerText = 'Please fill the required fields correctly!';
-    warningParagraph.style = 'text-align: center; background-color: red;';
-    formTag.appendChild(warningParagraph);
+submitDataToAPI();
+
+const clickRefresh = () => {
+  refreshButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    messageTag.innerText = 'Refreshed successfully!';
+    messageTag.style = 'background-color:green; color:white;';
+    refreshContainer.appendChild(messageTag);
     setTimeout(() => {
-      formTag.removeChild(formTag.lastChild);
+      refreshContainer.removeChild(refreshContainer.lastChild);
     }, 3000);
-  }
-});
+    returnScoreData();
+  });
+};
+
+clickRefresh();
