@@ -1,0 +1,3 @@
+scripts/1-createGameWithPostRequest.js
+scripts/2-fillGamePostRequest.js
+scripts/3-getCreatedGameData.js

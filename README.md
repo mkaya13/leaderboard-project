@@ -4,7 +4,7 @@
 
 - `npm init` --> Start with initializing package.json
 
-- `npm install webpack webpack-cli html-webpack-plugin style-loader css-loader --save-dev` --> Install Webpack packages
+- `npm install webpack webpack-cli webpack-dev-server html-webpack-plugin style-loader css-loader --save-dev` --> Install Webpack packages
 
 - Create a src folder so that webpack can compile source codes (Do not forget to add import `"./style.css";` inside your main js file)
 
@@ -15,6 +15,7 @@
 ## Run Webpack
 
 - `npm run build`
+- `npm start`
 
 ## Install Linters
 
@@ -31,6 +32,26 @@
 - `npx hint .`
 - `npx stylelint "**/*.{css,scss}"`
 - `npx eslint .`
+
+## Install node-fetch, dontenv, fs Modules
+
+- `npm install node-fetch dotenv fs`
+
+## Environment Variables
+
+- Create a .env file in home path and add API Base Url.
+
+## Node Modules
+
+- Add `"type": "module"` inside package.json
+
+- Run `scripts/1-createGameWithPostRequest.js` to create a Game inside the API.
+
+- Then read the gameID from `gameIdConfig.json` and create the `gameIdConfig.js` so that it can export the gameID inside `index.html`.
+
+- Run `scripts/2-fillGamePostRequest.js` to add inputs on the created game API endpoint.
+
+- Run `scripts/3-getCreatedGameData.js` to read the data entered inside created game API endpoint.
 
 ## Built With
 
