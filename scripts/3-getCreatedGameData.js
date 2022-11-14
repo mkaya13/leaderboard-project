@@ -8,7 +8,8 @@ dotenv.config();
 
 const BASE_URL = process.env.BASE_URL || '';
 
-const gameConfig = JSON.parse(fs.readFileSync('../gameIdConfig.json'));
+const gameConfig = JSON.parse(fs.readFileSync('../gameConfig.json'));
+console.log(gameConfig);
 const API_PATH = `${BASE_URL}games/${gameConfig.gameID}/scores/`;
 
 async function fetchData() {

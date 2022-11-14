@@ -1,18 +1,23 @@
 import './style.css';
 import { Score } from './Modules/rankClass.js';
 import { fetchData } from './Modules/getDataFromCreatedGame.js';
+import { enterScoreData } from './Modules/postDataToCreatedGame.js';
 
 const tableContent = document.querySelector('.ranking-table');
-const rankingItems = document.createElement('ul');
-const formSubmit = document.querySelector('.form-submit');
+const formTag = document.querySelector('.add-to-ranking');
 const inputName = document.getElementById('input-name');
 const inputScore = document.getElementById('input-score');
-const formTag = document.querySelector('.add-to-ranking');
+const refreshButton = document.querySelector('.refresh');
 
 let rankingList = [];
 let rankingContent = '';
+let score = {};
+
+const rankingItems = document.createElement('ul');
+rankingItems.className = 'item-list-ul';
 
 const sortThenAdd = () => {
+  tableContent.innerHTML = '';
   rankingList.sort((a, b) => b.score - a.score);
 
   rankingList.forEach((data) => {
@@ -32,10 +37,26 @@ async function returnScoreData() {
 
 returnScoreData();
 
-const addScoresToLocalStorage = () => {
-  const str = JSON.stringify(rankingList);
-  localStorage.setItem('storedBookData', str);
+// const addScoresToLocalStorage = () => {
+//   const str = JSON.stringify(rankingList);
+//   localStorage.setItem('storedBookData', str);
+// };
+
+const submitDataToAPI = () => {
+  formTag.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    score = new Score(inputName.value, parseFloat(inputScore.value));
+    await enterScoreData(score);
+  });
 };
 
-rankingItems.innerHTML = rankingContent;
-tableContent.appendChild(rankingItems);
+submitDataToAPI();
+
+const clickRefresh = () => {
+  refreshButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    returnScoreData();
+  });
+};
+
+clickRefresh();

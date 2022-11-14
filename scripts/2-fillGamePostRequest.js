@@ -30,9 +30,9 @@ async function enterScoreData(enterUser, enterScore) {
 }
 
 async function getCreateGameResponse() {
-  await enterScoreData('Emre', 97);
-  await enterScoreData('Ahmet', 53);
-  await enterScoreData('Cemre', 75);
+  await enterScoreData('Michael', 97);
+  await enterScoreData('Nani', 53);
+  await enterScoreData('Brad', 75);
 }
 
 getCreateGameResponse();

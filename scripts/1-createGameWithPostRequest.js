@@ -33,11 +33,11 @@ async function getCreateGameResponse() {
 }
 
 function storeGameIdData() {
-  fs.writeFile('gameIdConfig.json', JSON.stringify(gameIdObject), (err) => {
+  fs.writeFile('gameConfig.json', JSON.stringify(gameIdObject), (err) => {
     if (err) throw err;
 
     console.log(
-      `.gameIdConfig.js file was succesfully created and gameID ${gameIdObject.gameID} was stored inside!`,
+      `.gameConfig.js file was succesfully created and gameID ${gameIdObject.gameID} was stored inside!`,
     );
   });
 }

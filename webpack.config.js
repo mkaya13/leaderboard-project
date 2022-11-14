@@ -28,15 +28,7 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        loader: 'file-loader',
         type: 'asset/resource',
-        options: {
-          name: '[name].[hash:6].[ext]',
-          outputPath: 'img',
-          publicPath: 'img',
-          emitFile: true,
-          esModule: false,
-        },
       },
     ],
   },
