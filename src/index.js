@@ -8,6 +8,7 @@ const formTag = document.querySelector('.add-to-ranking');
 const inputName = document.getElementById('input-name');
 const inputScore = document.getElementById('input-score');
 const refreshButton = document.querySelector('.refresh');
+const refreshContainer = document.querySelector('.subtitle-and-refresh');
 
 let rankingList = [];
 let rankingContent = '';
@@ -18,6 +19,7 @@ rankingItems.className = 'item-list-ul';
 
 const sortThenAdd = () => {
   tableContent.innerHTML = '';
+  rankingContent = '';
   rankingList.sort((a, b) => b.score - a.score);
 
   rankingList.forEach((data) => {
@@ -42,11 +44,31 @@ returnScoreData();
 //   localStorage.setItem('storedBookData', str);
 // };
 
+let res;
+const messageTag = document.createElement('p');
+
 const submitDataToAPI = () => {
   formTag.addEventListener('submit', async (event) => {
     event.preventDefault();
     score = new Score(inputName.value, parseFloat(inputScore.value));
-    await enterScoreData(score);
+    res = await enterScoreData(score);
+    if (res.result === 'Leaderboard score created correctly.') {
+      messageTag.innerText = res.result;
+      messageTag.style = 'background-color:green; color:white;';
+      formTag.appendChild(messageTag);
+      setTimeout(() => {
+        formTag.removeChild(formTag.lastChild);
+      }, 3000);
+    } else {
+      messageTag.innerText = 'Fix your input please!';
+      messageTag.style = 'background-color:red; color:white;';
+      formTag.appendChild(messageTag);
+      setTimeout(() => {
+        formTag.removeChild(formTag.lastChild);
+      }, 3000);
+    }
+    inputName.value = '';
+    inputScore.value = '';
   });
 };
 
@@ -55,6 +77,12 @@ submitDataToAPI();
 const clickRefresh = () => {
   refreshButton.addEventListener('click', (event) => {
     event.preventDefault();
+    messageTag.innerText = 'Refreshed successfully!';
+    messageTag.style = 'background-color:green; color:white;';
+    refreshContainer.appendChild(messageTag);
+    setTimeout(() => {
+      refreshContainer.removeChild(refreshContainer.lastChild);
+    }, 3000);
     returnScoreData();
   });
 };
