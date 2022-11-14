@@ -15,6 +15,7 @@
 ## Run Webpack
 
 - `npm run build`
+- `npm start`
 
 ## Install Linters
 
