@@ -2,7 +2,7 @@ import { fetchData } from './getDataFromCreatedGame.js';
 import { Score } from './rankClass.js';
 import { enterScoreData } from './postDataToCreatedGame.js';
 
-export const updateEventMessage = (formTag, messageTag, res) => {
+const updateEventMessage = (formTag, messageTag, res) => {
   messageTag.innerText = res;
   formTag.appendChild(messageTag);
   setTimeout(() => {
@@ -10,7 +10,7 @@ export const updateEventMessage = (formTag, messageTag, res) => {
   }, 3000);
 };
 
-export const sortThenAdd = (
+const sortThenAdd = (
   tableContent,
   rankingContent,
   rankingList,
@@ -71,8 +71,6 @@ export const clickRefresh = (tableContent, rankingContent, rankingList,
 };
 
 export default {
-  updateEventMessage,
-  sortThenAdd,
   returnScoreData,
   submitDataToAPI,
   clickRefresh,
