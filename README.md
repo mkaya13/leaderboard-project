@@ -1,5 +1,13 @@
 ## Leaderboard Project
 
+- Summary of the project: Create an API via sending a post request to the endpoint of the API with node.js. Grab the response and save it inside the files. Then in the user interface add scores to created API endpoint. Click to refresh to see the added data inside the API endpoint.
+
+## Live Demo
+
+[Click here for live demo](https://mkaya13.github.io/leaderboard-project/dist/index.html)
+
+## Tasks
+
 - Project basically allows you to create an API endpoint called with a post request an returns the corresponding gameID with `1-createGameWithPostRequest.js` node.js.
 
 - Then you can fill the corresponding game with either `2-fillGamePostRequest.js` node.js or you can update the score from user interface.
@@ -8,11 +16,11 @@
 
 - Submit button allows you to send a post request that will add the name and score features to created API endpoint in json data format.
 
-## Live Demo
-
-[Click here for live demo](https://mkaya13.github.io/leaderboard-project/dist/index.html)
-
 ## SETUP PROJECT
+
+- `npm install` --> For uploading all the necessary packages.
+
+or
 
 - `npm init` --> Start with initializing package.json
 
@@ -22,7 +30,11 @@
 
 - Create `webpack-config.js` webpack config file and fill it.
 
-- Add `"build": "webpack"` inside package.json scripts.
+- Add `"build": "webpack", "watch": "webpack --watch", "start": "webpack serve --open"` inside package.json scripts.
+
+- `npm install luxon --save-dev` --> date package
+
+- `npm install fs node-fetch dotenv` --> packages for maintaining environment variables, writing them on respective files and running script functions inside script folder as node.js
 
 ## Run Webpack
 
