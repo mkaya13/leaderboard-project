@@ -20,7 +20,7 @@
 
 - `npm install` --> For uploading all the necessary packages.
 
-or
+  or
 
 - `npm init` --> Start with initializing package.json
 
