@@ -1,7 +1,7 @@
 export class Score {
-  constructor(Name, Score) {
-    this.Name = Name;
-    this.Score = Score;
+  constructor(user, score) {
+    this.user = user;
+    this.score = score;
   }
 }
 

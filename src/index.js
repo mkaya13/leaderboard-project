@@ -1,94 +1,29 @@
 import './style.css';
-import { Score } from './Modules/rankClass.js';
+import { returnScoreData, submitDataToAPI, clickRefresh } from './Modules/utils.js';
+import { showDateTime } from './Modules/dateModul.js';
 
 const tableContent = document.querySelector('.ranking-table');
-const rankingItems = document.createElement('ul');
-const formSubmit = document.querySelector('.form-submit');
+const formTag = document.querySelector('.add-to-ranking');
 const inputName = document.getElementById('input-name');
 const inputScore = document.getElementById('input-score');
-const formTag = document.querySelector('.add-to-ranking');
+const refreshButton = document.querySelector('.refresh');
+const refreshContainer = document.querySelector('.subtitle-and-refresh');
 
-const rankingList = [
-  {
-    Name: 'Mert',
-    Score: 125,
-  },
-  {
-    Name: 'Emre',
-    Score: 78,
-  },
-  {
-    Name: 'Ali',
-    Score: 77,
-  },
-  {
-    Name: 'Muhammed',
-    Score: 42,
-  },
-  {
-    Name: 'Nani',
-    Score: 50,
-  },
-  {
-    Name: 'Haward',
-    Score: 100,
-  },
-];
+const rankingList = [];
+const rankingContent = '';
+const score = {};
 
-const addScoresToLocalStorage = () => {
-  const str = JSON.stringify(rankingList);
-  localStorage.setItem('storedBookData', str);
-};
+const rankingItems = document.createElement('ul');
+rankingItems.className = 'item-list-ul';
 
-let rankingContent = '';
+returnScoreData(tableContent, rankingContent, rankingList, rankingItems);
 
-const sortThenAdd = () => {
-  rankingList.sort((a, b) => b.Score - a.Score);
+let res;
+const messageTag = document.createElement('p');
 
-  rankingList.forEach((score) => {
-    rankingContent += `
-          <li>${score.Name}: ${score.Score}</li>
-          `;
-  });
+submitDataToAPI(formTag, score, inputName, inputScore, res, messageTag);
 
-  if (rankingList.length === 6) {
-    addScoresToLocalStorage(rankingList);
-  }
+clickRefresh(tableContent, rankingContent, rankingList,
+  rankingItems, refreshButton, messageTag, refreshContainer);
 
-  const rankingData = JSON.parse(localStorage.getItem('storedBookData'));
-
-  rankingItems.innerHTML = rankingData;
-  tableContent.appendChild(rankingItems);
-};
-
-sortThenAdd();
-
-rankingItems.innerHTML = rankingContent;
-tableContent.appendChild(rankingItems);
-
-formSubmit.addEventListener('click', (event) => {
-  event.preventDefault();
-
-  if (inputName.value !== '' && inputScore.value.match(/[0-9]/gi)) {
-    rankingContent = '';
-    const score = new Score(inputName.value, inputScore.value);
-    rankingList.push(score);
-
-    addScoresToLocalStorage();
-
-    sortThenAdd();
-
-    inputName.value = '';
-    inputScore.value = '';
-
-    rankingItems.innerHTML = rankingContent;
-  } else {
-    const warningParagraph = document.createElement('p');
-    warningParagraph.innerText = 'Please fill the required fields correctly!';
-    warningParagraph.style = 'text-align: center; background-color: red;';
-    formTag.appendChild(warningParagraph);
-    setTimeout(() => {
-      formTag.removeChild(formTag.lastChild);
-    }, 3000);
-  }
-});
+setInterval(showDateTime, 1000);
