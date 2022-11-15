@@ -6,6 +6,12 @@
 
 - Refresh button allows you to send a get request to the API that you created.
 
+- Submit button allows you to send a post request that will add the name and score features to created API endpoint in json data format.
+
+## Live Demo
+
+[Click here for live demo](https://mkaya13.github.io/leaderboard-project/dist/index.html)
+
 ## SETUP PROJECT
 
 - `npm init` --> Start with initializing package.json
@@ -67,7 +73,15 @@
 
 - JavaScript
 
-- Webpack
+- webpack
+
+- luxon
+
+- dotenv
+
+- fs
+
+- node-fetch
 
 ## Author
 
@@ -81,7 +95,7 @@
 
 - Contributions, issues, and feature requests are welcome!
 
-- Feel free to check the [issues page](https://github.com/V-Blaze/Awesome_Books/issues).
+- Feel free to check the [issues page](https://github.com/mkaya13/leaderboard-project/issues).
 
 ## Show your support
 

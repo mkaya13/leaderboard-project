@@ -2,3 +2,4 @@ scripts/1-createGameWithPostRequest.js
 scripts/2-fillGamePostRequest.js
 scripts/3-getCreatedGameData.js
 index.js
+src/Modules/utils.js
