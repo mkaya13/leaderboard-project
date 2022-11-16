@@ -13,25 +13,6 @@ body {
   width: 100%;
 }
 
-nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: calc(60% + 300px);
-  margin-right: 20px;
-  height: 100px;
-  padding: 0.5% 0 0 0;
-  align-items: center;
-}
-
-nav ul {
-  display: flex;
-  width: 100%;
-  padding-left: calc(20% - 160px);
-  gap: calc(16% - 60px);
-  list-style: none;
-}
-
 nav ul li {
   cursor: pointer;
 }
@@ -138,36 +119,22 @@ section ul li a {
   text-underline-offset: 8px;
 }
 
-.content-section {
-  height: 80%;
-  padding: 2% 8% 0 8%;
-}
-
-.content-section h1 {
-  font-size: 40px;
-}
-
 .main-content {
   display: flex;
+  height: 100%;
   flex-direction: column;
 }
 
-.content-boxes {
-  display: flex;
-  flex-direction: row;
-  padding: 8% 6% 0 6%;
-  font-size: 16px;
-}
-
 .item-1 {
-  flex: 3;
+  flex: 4;
+  gap: 15%;
 }
 
 .item-2 {
   display: flex;
   flex: 2;
   flex-direction: column;
-  gap: 40px;
+  gap: 8.5%;
 }
 
 .content-title {
@@ -252,8 +219,6 @@ input {
   width: 100%;
   display: flex;
   justify-content: end;
-  margin-right: 10%;
-  padding-top: 10px;
 }
 
 footer {
@@ -269,4 +234,195 @@ footer {
 .rights {
   font-size: 14px;
   color: ghostwhite;
+}
+
+@media (min-width: 768px) {
+  .toggle-button {
+    display: none;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: calc(60% + 300px);
+    margin-right: 20px;
+    height: 100px;
+    padding: 0.5% 0 0 0;
+    align-items: center;
+  }
+
+  nav ul {
+    display: flex;
+    width: 100%;
+    padding-left: calc(20% - 160px);
+    gap: calc(16% - 60px);
+    list-style: none;
+  }
+
+  .content-boxes {
+    display: flex;
+    flex-direction: row;
+    padding: 8% 6% 0 6%;
+    font-size: 16px;
+  }
+
+  .content-section {
+    height: 80%;
+    width: 75%;
+    padding: 2% 8% 0 8%;
+  }
+
+  .content-section h1 {
+    font-size: 40px;
+  }
+
+  .current-time {
+    margin-right: 10%;
+    padding-top: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    width: 100%;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-right: 20px;
+    height: 100px;
+    padding: 0.5% 0 0 0;
+    align-items: center;
+  }
+
+  nav ul {
+    display: none;
+    width: 0;
+    list-style: none;
+  }
+
+  .nav-list + .flag-div {
+    padding-left: calc(62% - 160px);
+  }
+
+  .toggle-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 19px;
+    margin-left: 5%;
+  }
+
+  .toggle-button .bar {
+    height: 3px;
+    width: 30px;
+    background-color: #6070ff;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .content-boxes {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    gap: 10%;
+  }
+
+  .item-1 {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .item-2 {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .main-content {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 10%;
+    gap: 10%;
+  }
+
+  .main-content h1 {
+    font-size: 40px;
+  }
+
+  .subtitle-and-refresh {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;
+    gap: 5%;
+    width: 100%;
+  }
+
+  .content-section {
+    height: 80%;
+    width: 100%;
+  }
+
+  .ranking-table {
+    width: 100%;
+  }
+
+  form {
+    width: 90%;
+  }
+
+  .refresh {
+    margin-top: 10%;
+  }
+
+  .content-title {
+    margin-top: 20%;
+  }
+
+  .add-to-ranking {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .announcement-list {
+    width: 90%;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+  }
+
+  .current-time {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding-top: 20px;
+  }
+
+  .ranking-table ul li {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 17px;
+    height: 40px;
+    padding: 0 0 0 0;
+  }
 }

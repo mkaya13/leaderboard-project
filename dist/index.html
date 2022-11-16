@@ -9,8 +9,13 @@
 <script defer src="runtime.bundle.js"></script><script defer src="index.bundle.js"></script></head>
 <body>
     <nav>
+        <a href="#" class="toggle-button">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </a>
         <span><img src="./img/logo.png" alt=""></span>
-        <ul>
+        <ul class="nav-list">
             <li>Home</li>
             <li>About</li>
             <li>Contents</li>
@@ -18,8 +23,10 @@
             <li>Products</li>
             <li>More</li>
         </ul>
-        <span class="flags"><img class="language-flag" src="./img/USA-flag.svg" alt=""></span>
-        <h3 class="language">EN</h3>
+        <div class="flag-div"></div>
+            <span class="flags"><img class="language-flag" src="./img/USA-flag.svg" alt=""></span>
+            <h3 class="language">EN</h3>
+        </div>
         <button class="connect-button">Connect App</button>
     </nav>
     <main>
@@ -28,7 +35,7 @@
                 <ul class="announcement-list">
                     <li><span class="new">NEW</span></li>
                     <li>Check your eligibility for early access to ranking system.</li>
-                    <li><a class="view-now" href="#">View now.</a></li>
+                    <li><a class="view-now" href="#">View</a></li>
                 </ul>
             </div>
             <span class="current-time">Loading...</span>
