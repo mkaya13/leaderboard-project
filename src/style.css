@@ -309,13 +309,12 @@ footer {
   }
 
   .toggle-button {
-    display: block;
-    margin-left: 5%;
-    right: 4%;
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 30px;
     height: 19px;
+    margin-left: 5%;
   }
 
   .toggle-button .bar {
