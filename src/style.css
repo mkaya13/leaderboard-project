@@ -316,7 +316,6 @@ footer {
     justify-content: space-between;
     width: 30px;
     height: 19px;
-    display: flex;
   }
 
   .toggle-button .bar {
@@ -425,6 +424,6 @@ footer {
     text-align: center;
     font-size: 17px;
     height: 40px;
-    padding: 0 0 0 0px;
+    padding: 0 0 0 0;
   }
 }
