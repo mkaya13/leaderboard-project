@@ -15,11 +15,10 @@ const score = {};
 
 const rankingItems = document.createElement('ul');
 rankingItems.className = 'item-list-ul';
-
-returnScoreData(tableContent, rankingContent, rankingList, rankingItems);
-
 let res;
 const messageTag = document.createElement('p');
+
+returnScoreData(tableContent, rankingContent, rankingList, rankingItems);
 
 submitDataToAPI(formTag, score, inputName, inputScore, res, messageTag);
 
